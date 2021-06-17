@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 )
 
@@ -24,7 +25,7 @@ func (s *strArrayToInt) Scan() bool {
 
 	i, err := strconv.Atoi(d)
 	if err != nil {
-		s.err = err
+		s.err = fmt.Errorf("StrArrayToInt: INTへの変換に失敗しました %w", err)
 		return false
 	}
 
