@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 )
@@ -66,5 +67,9 @@ func main() {
 
 	if err := s.Err(); err != nil {
 		println(err.Error())
+
+		if errors.As(&strconv.NumError{}, &err) {
+			println("数字の変換エラーです")
+		}
 	}
 }
