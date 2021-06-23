@@ -16,11 +16,11 @@ func main() {
 
 	byteArray, _ := ioutil.ReadAll(resp.Body)
 
-	var j interface{}
+	var j []string
 	err = json.Unmarshal(byteArray, &j)
 	if err != nil {
 		panic(err)
 	}
 
-	println(string(byteArray))
+	println(j[0])
 }
