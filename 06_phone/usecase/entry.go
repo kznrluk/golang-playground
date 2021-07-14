@@ -30,9 +30,5 @@ func (e entryImpl) AddEntry(name domain.Name, number domain.Phone) error {
 }
 
 func (e entryImpl) GetAllEntries() ([]domain.Entry, error) {
-	err := e.AddEntry("Hello", "07011111111")
-	if err != nil {
-		return nil, err
-	}
 	return e.db.GetAll()
 }

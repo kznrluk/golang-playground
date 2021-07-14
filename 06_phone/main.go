@@ -13,5 +13,5 @@ func main() {
 	r := interfaces.NewRouter(allHandler)
 	r.Set(e)
 
-	e.Logger.Fatal(e.Start(":8090"))
+	e.Logger.Debug(e.Start(":8090"))
 }

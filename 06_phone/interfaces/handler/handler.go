@@ -35,10 +35,13 @@ func SetNewEntryHandler() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		uc := usecase.NewEntry()
 
-		name := c.Get("name")
-		phone := c.Get("phone")
+		var put domain.Entry
+		err := c.Bind(&put)
+		if err != nil {
+			return c.String(500, err.Error())
+		}
 
-		err := uc.AddEntry(domain.Name(name.(string)), domain.Phone(phone.(string)))
+		err = uc.AddEntry(put.Name, put.Phone)
 		if err != nil {
 			return c.String(500, err.Error())
 		}
