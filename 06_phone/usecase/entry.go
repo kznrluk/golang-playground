@@ -6,7 +6,7 @@ import (
 )
 
 type Entry interface {
-	AddEntry(name domain.Name, number domain.Phone) error
+	AddEntry(id domain.Id, name domain.Name, number domain.Phone) error
 	GetAllEntries() ([]domain.Entry, error)
 }
 
@@ -19,9 +19,9 @@ func NewEntry() Entry {
 	return &entryImpl{db: db}
 }
 
-func (e entryImpl) AddEntry(name domain.Name, number domain.Phone) error {
+func (e entryImpl) AddEntry(id domain.Id, name domain.Name, number domain.Phone) error {
 	entry := domain.Entry{
-		Id:    0,
+		Id:    id,
 		Name:  name,
 		Phone: number,
 	}

@@ -41,7 +41,7 @@ func SetNewEntryHandler() echo.HandlerFunc {
 			return c.String(500, err.Error())
 		}
 
-		err = uc.AddEntry(put.Name, put.Phone)
+		err = uc.AddEntry(put.Id, put.Name, put.Phone)
 		if err != nil {
 			return c.String(500, err.Error())
 		}
